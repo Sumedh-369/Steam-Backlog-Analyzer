@@ -1,3 +1,14 @@
+"""
+fetch_games.py
+
+Steam Web API se aapki puri game library fetch karta hai aur CSV mein save karta hai.
+
+Important:
+- Steam API key .env file se leta hai
+- Har game ka playtime, name, appid etc. laata hai
+- Yeh project ka data source hai
+"""
+
 import os
 import requests # real time data access from internet (For api call)
 import pandas as pd

@@ -1,3 +1,18 @@
+"""
+ml_predictions.py
+
+Advanced Machine Learning module for Steam Backlog Analyzer.
+
+Yeh file ye kaam karti hai:
+- Data loading + feature engineering
+- Completion Probability predict karna (Random Forest)
+- Estimated time to finish game
+- Smart recommendations
+
+Main Goal: "aap is game ko khatam kar paaoge ya nahi" predict karna.
+"""
+
+
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier

@@ -1,12 +1,16 @@
 """
 app.py
 
-Streamlit dashboard for the Steam Backlog Analyzer.
-Reuses the exact same data loading, classification, and chart functions
-from visualize_games.py so both files stay in sync.
+Main Streamlit Dashboard for Steam Backlog Analyzer.
 
-Run from the src/ directory with:
-    streamlit run app.py
+Yeh file visualize_games.py aur ml_predictions.py se functions import karke
+ek interactive web dashboard banati hai.
+
+Features:
+- KPI metrics (Total games, Backlog %, etc.)
+- Multiple charts (Donut, Pareto, etc.) {Commented out for better view}
+- Interactive backlog table with filter + download
+- ML Predictions section
 """
 
 import streamlit as st
