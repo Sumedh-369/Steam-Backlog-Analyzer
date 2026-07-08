@@ -63,23 +63,25 @@ st.divider()
 # ---------------------------------------------------------------------------
 # Charts
 # ---------------------------------------------------------------------------
+#{
+# top_row_left, top_row_right = st.columns(2)
+# with top_row_left:
+#     st.pyplot(plot_backlog_donut(df))
+# with top_row_right:
+#     st.pyplot(plot_pareto(df))
 
-top_row_left, top_row_right = st.columns(2)
-with top_row_left:
-    st.pyplot(plot_backlog_donut(df))
-with top_row_right:
-    st.pyplot(plot_pareto(df))
+# mid_row_left, mid_row_right = st.columns(2)
+# with mid_row_left:
+#     n = st.slider("Number of top games to show", 5, 30, 15)
+#     st.pyplot(plot_top_n(df, n=n))
+# with mid_row_right:
+#     st.pyplot(plot_playtime_histogram(df))
 
-mid_row_left, mid_row_right = st.columns(2)
-with mid_row_left:
-    n = st.slider("Number of top games to show", 5, 30, 15)
-    st.pyplot(plot_top_n(df, n=n))
-with mid_row_right:
-    st.pyplot(plot_playtime_histogram(df))
+# st.pyplot(plot_recency_scatter(df))
 
-st.pyplot(plot_recency_scatter(df))
+# st.divider()
+#}
 
-st.divider()
 
 # ---------------------------------------------------------------------------
 # Backlog tables
@@ -104,3 +106,37 @@ st.download_button(
     file_name="backlog_filtered.csv",
     mime="text/csv",
 )
+
+# ====================== ML SECTION ======================
+st.divider()
+st.subheader("🤖 ML Insights")
+
+from ml_analysis import load_data, add_ml_features, get_recommendations
+
+ml_df = add_ml_features(load_data())
+
+# Recommendations
+st.subheader("Recommended Games to Finish")
+recs = get_recommendations(ml_df)
+st.dataframe(recs, use_container_width=True)
+
+# Cluster distribution
+st.subheader("Game Clusters")
+cluster_counts = ml_df['cluster'].value_counts()
+st.bar_chart(cluster_counts)
+
+# ====================== ADVANCED ML PREDICTIONS ======================
+st.divider()
+st.subheader("🔮 Advanced Predictions")
+
+from ml_predictions import load_data, train_completion_model, predict_time_to_finish, get_insights
+
+df_ml = load_data()
+df_ml, model = train_completion_model(df_ml)
+df_ml = predict_time_to_finish(df_ml)
+
+st.subheader("🎯 Top Games You Are Likely To Finish")
+top_games = get_insights(df_ml)
+st.dataframe(top_games, use_container_width=True)
+
+st.caption("Completion Probability = chances You will play this game properly")
