@@ -23,7 +23,7 @@ A project that analyse your Steam library.It determine patterns and predicts pro
 1. Clone the repo
 2. `python -m venv venv` To activate the Environment
 3. `pip install -r requirements.txt`
-4. `.env` To create a file and add Steam API key 
+4. `.env` create this file and add Steam API key 
 5. `python src/fetch_games.py`
 6. `streamlit run src/app.py`
 
