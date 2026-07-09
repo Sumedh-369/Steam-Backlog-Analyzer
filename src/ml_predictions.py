@@ -13,6 +13,13 @@ Prediction Module with multiple models.
 User dashboard se different algorithms choose kar sakta hai.
 Main Goal: "aap is game ko khatam kar paaoge ya nahi" predict karna.
 """
+"""
+ml_predictions.py
+
+Advanced Prediction Module with multiple models.
+User dashboard se different algorithms choose kar sakta hai.
+"""
+
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
