@@ -128,27 +128,3 @@ st.dataframe(recs, use_container_width=True)
 st.subheader("Game Clusters")
 cluster_counts = ml_df['cluster'].value_counts()
 st.bar_chart(cluster_counts)
-
-# ====================== ADVANCED ML PREDICTIONS ======================
-# ====================== ADVANCED ML PREDICTIONS ======================
-st.divider()
-st.subheader("🔮 Advanced Predictions")
-
-from ml_predictions import load_data, train_and_predict, predict_time_to_finish, get_insights
-
-# Model selector
-model_choice = st.selectbox(
-    "Choose Prediction Model",
-    options=["RandomForest", "GradientBoosting", "LogisticRegression"],
-    index=0
-)
-
-df_ml = load_data()
-df_ml, model = train_and_predict(df_ml, model_name=model_choice)
-df_ml = predict_time_to_finish(df_ml)
-
-st.subheader("🎯 Top Games You Are Likely To Finish")
-top_games = get_insights(df_ml)
-st.dataframe(top_games, use_container_width=True)
-
-st.caption(f"Using Model: **{model_choice}**")
